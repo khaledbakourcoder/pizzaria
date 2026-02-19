@@ -2,7 +2,7 @@ import ProductCard from '@/components/product/ProductCard';
 
 export default function MenuSection({ category, allProducts }: any) {
     const name = typeof category === 'string' ? category : category.name;
-    const categoryProducts = allProducts.filter(p => p.category === name);
+    const categoryProducts = allProducts.filter((p: { category: any; }) => p.category === name);
     if (categoryProducts.length === 0) return null;
 
     return (
