@@ -34,8 +34,9 @@ export default function JsonLd() {
                 "closes": "21:00"
             }
         ],
-        "servesCuisine": ["Italian", "Pizza", "Pasta"],
-        "priceRange": "$$"
+        "servesCuisine": ["Italian", "Pizza"],
+        "priceRange": "$$",
+        "hasMenu": "https://pointpizza.de/menu"
     };
 
     return (

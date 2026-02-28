@@ -1,4 +1,4 @@
-// app/menu/page.tsx
+import type { Metadata } from 'next';
 import { categories } from '@/lib/constants/categories';
 import { products } from '@/lib/constants/products';
 import StoreInfoBar from '@/components/layout/StoreInfoBar';
@@ -7,6 +7,19 @@ import CategoryNavContainer from '@/components/menu/CategoryNavContainer'; // Ne
 import MenuHero from '@/components/menu/MenuHero';
 import MenuSection from '@/components/menu/MenuSection';
 import SimpleFooter from '@/components/layout/SimpleFooter';
+
+export const metadata: Metadata = {
+    title: 'Speisekarte | PointPizza Flensburg',
+    description: 'Entdecke unsere große Auswahl an handgemachten Pizzen und hausgemachten Smoothies. Frische Zutaten und echte Handarbeit.',
+    alternates: {
+        canonical: 'https://pointpizza.de/menu',
+    },
+    openGraph: {
+        title: 'Speisekarte | PointPizza Flensburg',
+        description: 'Entdecke unsere große Auswahl an handgemachten Pizzen und hausgemachten Smoothies.',
+        url: 'https://pointpizza.de/menu',
+    }
+};
 
 export default function MenuPage() {
     return (

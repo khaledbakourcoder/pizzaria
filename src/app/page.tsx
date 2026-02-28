@@ -7,6 +7,13 @@ import HomeNavbar from '@/components/home/HomeNavbar';
 import HeroContent from '@/components/home/HeroContent';
 import CategoryGrid from '@/components/home/CategoryGrid';
 import FeaturedSection from '@/components/home/FeaturedSection';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    alternates: {
+        canonical: 'https://pointpizza.de',
+    }
+};
 
 export default function Home() {
 

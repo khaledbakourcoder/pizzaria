@@ -23,29 +23,6 @@ export const categories = [
         ]
     },
     {
-        name: 'Pasta',
-        image: '/category/pasta.png',
-        slug: 'pasta',
-        toppings: [
-            { name: 'Extra Käse / Parmesan', price: 1.00 },
-            { name: 'Extra Sauce', price: 0.50 },
-            { name: 'Hähnchen', price: 2.00 },
-            { name: 'Meeresfrüchte', price: 2.50 },
-        ]
-    },
-    {
-        name: 'Smoothies',
-        image: '/category/smothis.png',
-        slug: 'smoothies',
-        toppings: [
-            { name: 'Proteinpulver', price: 1.50 },
-            { name: 'Chiasamen', price: 1.00 },
-            { name: 'Haferflocken', price: 1.00 },
-            { name: 'Mandelmilch / Sojamilch', price: 0.50 },
-            { name: 'Honig', price: 0.50 },
-        ]
-    },
-    {
         name: 'Kalte Getränke',
         image: '/category/cola.png',
         slug: 'softdrinks',
