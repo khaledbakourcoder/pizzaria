@@ -16,8 +16,9 @@ export default function CategoryGrid({ categories }: Props) {
                                 <div className="relative w-full h-full rounded-full overflow-hidden">
                                     <Image
                                         src={cat.image}
-                                        alt={cat.name}
+                                        alt={`Kategorie ${cat.name}`}
                                         fill
+                                        sizes="(max-width: 768px) 33vw, 16vw"
                                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                                     />
                                 </div>

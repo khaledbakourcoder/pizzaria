@@ -7,8 +7,10 @@ export default function BackgroundFixed() {
             <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/40 to-background z-10" />
             <Image
                 src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070"
-                alt="Hintergrund"
+                alt="Pizza Hintergrundbild"
                 fill
+                sizes="100vw"
+                quality={90}
                 className="object-cover object-center opacity-40 scale-105"
                 priority
             />

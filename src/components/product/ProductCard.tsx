@@ -11,7 +11,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
     // 1. Finde die Kategorie-Daten für dieses Produkt
     const categoryData = useMemo(() =>
-            categories.find(cat => cat.name === product.category),
+        categories.find(cat => cat.name === product.category),
         [product.category]
     );
 
@@ -40,7 +40,7 @@ export default function ProductCard({ product }: { product: Product }) {
         const doughPrice = selectedDough?.price || 0;
         const extrasPrice = selectedExtras.reduce((sum, name) => {
             const extra = categoryData?.toppings?.find(t => t.name === name);
-           console.log(extra)
+            console.log(extra)
             return sum + (extra?.price || 0);
         }, 0);
         return (base + doughPrice + extrasPrice).toFixed(2);
@@ -52,8 +52,9 @@ export default function ProductCard({ product }: { product: Product }) {
             <div className="relative w-full md:w-1/3 h-64 md:h-80">
                 <Image
                     src={product.imageUrl}
-                    alt={product.imageAlt}
+                    alt={`Produktbild von ${product.imageAlt}`}
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover"
                 />
             </div>
