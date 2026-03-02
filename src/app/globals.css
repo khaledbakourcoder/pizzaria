@@ -5,49 +5,50 @@
    Ändere nur diese Werte, um die gesamte Seite umzufärben.
 --------------------------------------------------------- */
 @theme {
-    /* -- Hauptfarben -- */
-    --color-background: #0b1218;     /* Dunkler Hintergrund */
-    --color-surface: #0f172a;        /* Etwas hellerer Hintergrund (Karten/Nav) */
+  /* -- Hauptfarben -- */
+  --color-background: #0b1218; /* Dunkler Hintergrund */
+  --color-surface: #0f172a; /* Etwas hellerer Hintergrund (Karten/Nav) */
 
-    --color-primary: #eab308;        /* Akzentfarbe (Gold/Yellow-500) */
-    --color-primary-fg: #000000;     /* Text auf der Akzentfarbe (Schwarz) */
+  --color-primary: #eab308; /* Akzentfarbe (Gold/Yellow-500) */
+  --color-primary-fg: #000000; /* Text auf der Akzentfarbe (Schwarz) */
 
-    /* -- Textfarben -- */
-    --color-foreground: #ffffff;     /* Haupttext (Weiß) */
-    --color-muted: #9ca3af;          /* Nebentext (Grau-400) */
+  /* -- Textfarben -- */
+  --color-foreground: #ffffff; /* Haupttext (Weiß) */
+  --color-muted: #9ca3af; /* Nebentext (Grau-400) */
 
-    /* -- Statusfarben -- */
-    --color-success: #22c55e;        /* Grün (Geöffnet) */
-    --color-error: #ef4444;          /* Rot (Geschlossen) */
+  /* -- Statusfarben -- */
+  --color-success: #22c55e; /* Grün (Geöffnet) */
+  --color-error: #ef4444; /* Rot (Geschlossen) */
 
-    /* -- UI Elemente -- */
-    --color-border: rgba(255, 255, 255, 0.08); /* Feine Linien */
+  /* -- UI Elemente -- */
+  --color-border: rgba(255, 255, 255, 0.08); /* Feine Linien */
 
-    /* -- Schriften -- */
-    --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  /* -- Schriften -- */
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 /* ---------------------------------------------------------
    BASE STYLES
 --------------------------------------------------------- */
 body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-sans);
-    /* Text-Auswahl Farbe */
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  /* Text-Auswahl Farbe */
 }
 
 ::selection {
-    background-color: var(--color-primary);
-    color: var(--color-primary-fg);
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
 }
 
 /* Scrollbar verstecken */
 .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -4,44 +4,59 @@ import "./globals.css";
 import JsonLd from "@/components/SEO/JsonLd";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+});
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://pointpizza.de'),
-    title: 'PointPizza Flensburg | Goldener Genuss - Beste Pizza & Pasta',
-    description: 'Erlebe den Gold-Standard der Pizza in Flensburg. Frische Zutaten, 72h Teigruhe und hausgemachte Smoothies am Holm 123. Jetzt Speisekarte ansehen!',
-    keywords: ['Pizza Flensburg', 'Pasta Flensburg', 'PointPizza', 'Lieferservice Flensburg', 'Essen gehen Flensburg'],
-    openGraph: {
-        title: 'PointPizza Flensburg | Goldener Genuss',
-        description: 'Die beste Pizza der Stadt direkt an der Förde. Frische Zutaten, 72h Teigruhe und echte Leidenschaft.',
-        url: 'https://pointpizza.de',
-        siteName: 'PointPizza',
-        images: [
-            {
-                url: '/og-image.jpg',
-                width: 1200,
-                height: 630,
-                alt: 'PointPizza Flensburg - Goldener Genuss'
-            }
-        ],
-        locale: 'de_DE',
-        type: 'website',
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'PointPizza Flensburg',
-        description: 'Die beste Pizza der Stadt direkt an der Förde.',
-        images: ['/og-image.jpg'],
-    }
-}
+  metadataBase: new URL("https://pointpizza.de"),
+  title: "PointPizza Flensburg | Goldener Genuss - Beste Pizza & Pasta",
+  description:
+    "Erlebe den Gold-Standard der Pizza in Flensburg. Frische Zutaten, 72h Teigruhe und hausgemachte Smoothies am Holm 123. Jetzt Speisekarte ansehen!",
+  keywords: [
+    "Pizza Flensburg",
+    "Pasta Flensburg",
+    "PointPizza",
+    "Lieferservice Flensburg",
+    "Essen gehen Flensburg",
+  ],
+  openGraph: {
+    title: "PointPizza Flensburg | Goldener Genuss",
+    description:
+      "Die beste Pizza der Stadt direkt an der Förde. Frische Zutaten, 72h Teigruhe und echte Leidenschaft.",
+    url: "https://pointpizza.de",
+    siteName: "PointPizza",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "PointPizza Flensburg - Goldener Genuss",
+      },
+    ],
+    locale: "de_DE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PointPizza Flensburg",
+    description: "Die beste Pizza der Stadt direkt an der Förde.",
+    images: ["/og-image.jpg"],
+  },
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-    return (
-        <html lang="de" className={`${inter.variable} ${playfair.variable}`}>
-            <body className="antialiased">
-                <JsonLd />
-                {children}
-            </body>
-        </html>
-    );
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="de" className={`${inter.variable} ${playfair.variable}`}>
+      <body className="antialiased">
+        <JsonLd />
+        {children}
+      </body>
+    </html>
+  );
 }
