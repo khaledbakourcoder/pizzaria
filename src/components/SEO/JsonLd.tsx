@@ -3,7 +3,7 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     name: "PointPizza Flensburg",
-    image: "https://www.point-pizza-flensburg.de//logo.png",
+    image: "https://www.point-pizza-flensburg.de//logo.webp",
     "@id": "https://www.point-pizza-flensburg.de/",
     url: "https://www.point-pizza-flensburg.de/",
     telephone: "+4946112345678",

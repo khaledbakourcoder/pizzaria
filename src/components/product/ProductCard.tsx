@@ -60,8 +60,10 @@ export default function ProductCard({ product }: { product: Product }) {
           src={product.imageUrl}
           alt={`Produktbild von ${product.imageAlt}`}
           fill
+          loading="lazy"
           sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover"
+
         />
       </div>
 

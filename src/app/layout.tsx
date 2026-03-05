@@ -13,15 +13,15 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.point-pizza-flensburg.de/"),
-    verification: {
-        google: "goZiAjtqBySq-rR3ndQ2Y2MEop1rvHo3v9VCMwxHPAE",
-    },
+  verification: {
+    google: "goZiAjtqBySq-rR3ndQ2Y2MEop1rvHo3v9VCMwxHPAE",
+  },
   title: "PointPizza Flensburg | Goldener Genuss - Beste Pizza & Pasta",
   description:
     "Erlebe den Gold-Standard der Pizza in Flensburg. Frische Zutaten, 72h Teigruhe und hausgemachte Smoothies am Holm 123. Jetzt Speisekarte ansehen!",
   keywords: [
-      "Point Pizza Flensburg",
-      "PointPizza Flensburg",
+    "Point Pizza Flensburg",
+    "PointPizza Flensburg",
     "Pizza Flensburg",
     "Pasta Flensburg",
     "PointPizza",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "PointPizza",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.webp",
         width: 1200,
         height: 630,
         alt: "PointPizza Flensburg - Goldener Genuss",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "PointPizza Flensburg",
     description: "Die beste Pizza der Stadt direkt an der Förde.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.webp"],
   },
 };
 

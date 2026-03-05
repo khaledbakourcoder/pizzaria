@@ -10,7 +10,7 @@ export function middleware(request: NextRequest) {
         pathname.startsWith('/_next') ||
         pathname.startsWith('/api') ||
         pathname.includes('google77170c2971f3ef2f.html') || // Deine Google-Datei!
-        pathname.includes('.') // Erlaubt Dateien wie bild.png
+        pathname.includes('.') // Erlaubt Dateien wie bild.webp
     ) {
         return NextResponse.next()
     }

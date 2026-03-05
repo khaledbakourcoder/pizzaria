@@ -27,12 +27,12 @@ export default function MainFooter() {
           </h5>
           <address className="space-y-4 text-sm text-muted font-light not-italic">
             <div className="flex flex-col">
-              <span className="text-foreground font-bold">Holm 123</span>
+              <span className="text-foreground font-bold">Holm 59</span>
               <span>24937 Flensburg</span>
             </div>
             <p>
               Tel:{" "}
-              <a href="tel:+4946112345678" className="hover:text-primary">
+              <a href="tel:++49 171 6003785" className="hover:text-primary">
                 +49 461 123 456 78
               </a>
             </p>

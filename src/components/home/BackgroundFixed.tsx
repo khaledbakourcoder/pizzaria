@@ -8,6 +8,8 @@ export default function BackgroundFixed() {
       <Image
         src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070"
         alt="Pizza Hintergrundbild"
+        decoding="async"
+        data-nimg="fill"
         fill
         sizes="100vw"
         quality={90}

@@ -1,7 +1,7 @@
 export const categories = [
   {
     name: "Pizza",
-    image: "/category/pizza.png",
+    image: "/category/pizza.webp",
     slug: "pizza",
     doughs: [
       { name: "Klassik (Weizen)", price: 0.0 },
@@ -24,7 +24,7 @@ export const categories = [
   },
   {
     name: "Kalte Getränke",
-    image: "/category/cola.png",
+    image: "/category/cola.webp",
     slug: "softdrinks",
     toppings: [], // Keine Extras
   },

@@ -10,9 +10,9 @@ export default function HomeNavbar() {
             POINT<span className="text-primary">PIZZA</span>
           </h1>
         </div>
-        <span className="text-[10px] text-muted tracking-[0.4em] uppercase pl-5">
+        <p className="text-[10px] text-muted tracking-[0.4em] uppercase pl-5">
           Flensburg
-        </span>
+        </p>
       </div>
 
       <div className="hidden md:flex gap-10 items-center text-[10px] font-black uppercase tracking-[0.3em] text-foreground">
