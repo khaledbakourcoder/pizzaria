@@ -12,11 +12,16 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pointpizza.de"),
+  metadataBase: new URL("https://www.point-pizza-flensburg.de/"),
+    verification: {
+        google: "goZiAjtqBySq-rR3ndQ2Y2MEop1rvHo3v9VCMwxHPAE",
+    },
   title: "PointPizza Flensburg | Goldener Genuss - Beste Pizza & Pasta",
   description:
     "Erlebe den Gold-Standard der Pizza in Flensburg. Frische Zutaten, 72h Teigruhe und hausgemachte Smoothies am Holm 123. Jetzt Speisekarte ansehen!",
   keywords: [
+      "Point Pizza Flensburg",
+      "PointPizza Flensburg",
     "Pizza Flensburg",
     "Pasta Flensburg",
     "PointPizza",
@@ -55,6 +60,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de" className={`${inter.variable} ${playfair.variable}`}>
+
       <body className="antialiased">
         <JsonLd />
         {children}
