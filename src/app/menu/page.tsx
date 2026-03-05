@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   description:
     "Entdecke unsere große Auswahl an handgemachten Pizzen und hausgemachten Smoothies. Frische Zutaten und echte Handarbeit.",
   alternates: {
-    canonical: "https://pointpizza.de/menu",
+    canonical: "https://www.point-pizza-flensburg.de/menu",
   },
   openGraph: {
     title: "Speisekarte | PointPizza Flensburg",
     description:
       "Entdecke unsere große Auswahl an handgemachten Pizzen und hausgemachten Smoothies.",
-    url: "https://pointpizza.de/menu",
+    url: "https://www.point-pizza-flensburg.de/menu",
   },
 };
 

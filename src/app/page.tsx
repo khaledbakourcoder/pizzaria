@@ -12,7 +12,7 @@ import { products } from "@/lib/constants/products";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://pointpizza.de",
+    canonical: "https://www.point-pizza-flensburg.de/",
   },
 };
 

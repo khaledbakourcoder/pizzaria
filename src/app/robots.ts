@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/", // Falls es interne API-Routen gibt, die nicht gecrawlt werden sollen
     },
-    sitemap: "https://pointpizza.de/sitemap.xml",
+    sitemap: "https://www.point-pizza-flensburg.de/sitemap.xml",
   };
 }

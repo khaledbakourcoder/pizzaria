@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "PointPizza Flensburg | Goldener Genuss",
     description:
       "Die beste Pizza der Stadt direkt an der Förde. Frische Zutaten, 72h Teigruhe und echte Leidenschaft.",
-    url: "https://pointpizza.de",
+    url: "https://www.point-pizza-flensburg.de/",
     siteName: "PointPizza",
     images: [
       {
