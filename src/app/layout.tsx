@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import JsonLd from "@/components/SEO/JsonLd";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import JsonLd from "@/components/SEO/JsonLd";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({
@@ -58,6 +59,7 @@ export default function RootLayout({
         <JsonLd />
         {children}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
