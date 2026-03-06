@@ -6,10 +6,10 @@ export default function JsonLd() {
     image: "https://www.point-pizza-flensburg.de//logo.webp",
     "@id": "https://www.point-pizza-flensburg.de/",
     url: "https://www.point-pizza-flensburg.de/",
-    telephone: "+4946112345678",
+    telephone: "+491716003785",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Holm 123",
+      streetAddress: "Holm 59",
       addressLocality: "Flensburg",
       postalCode: "24937",
       addressCountry: "DE",

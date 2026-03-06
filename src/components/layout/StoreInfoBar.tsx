@@ -5,7 +5,7 @@ export default function StoreInfoBar() {
     <div className="w-full bg-primary py-1.5 px-8 flex justify-center md:justify-between items-center border-b border-black/5">
       <div className="hidden md:flex items-center gap-4 text-primary-fg">
         <span className="text-[9px] font-black uppercase tracking-[0.3em]">
-          📍 Holm 123, Flensburg
+          📍 Holm 59, Flensburg
         </span>
       </div>
       <div className="flex items-center gap-3 text-primary-fg">

@@ -32,8 +32,8 @@ export default function MainFooter() {
             </div>
             <p>
               Tel:{" "}
-              <a href="tel:++49 171 6003785" className="hover:text-primary">
-                +49 461 123 456 78
+              <a href="tel:+491716003785" className="hover:text-primary">
+                +49 171 6003785
               </a>
             </p>
             <p>

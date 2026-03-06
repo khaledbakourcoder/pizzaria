@@ -12,7 +12,7 @@ export default function BackgroundFixed() {
         data-nimg="fill"
         fill
         sizes="100vw"
-        quality={90}
+        quality={75}
         className="object-cover object-center opacity-40 scale-105"
         priority
       />
