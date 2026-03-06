@@ -35,8 +35,14 @@ export default function JsonLd() {
       },
     ],
     servesCuisine: ["Italian", "Pizza"],
-    priceRange: "$$",
+    priceRange: "€ - €€",
     hasMenu: "https://www.point-pizza-flensburg.de/menu",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "54.783047",
+      longitude: "9.436274",
+    },
+    openingHours: "Mo, Di, Mi, Do 11:30-22:00 Fr, Sa 11:30-23:00 So 12:00-21:00",
   };
 
   return (

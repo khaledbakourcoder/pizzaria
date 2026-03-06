@@ -19,7 +19,10 @@ export const metadata: Metadata = {
   },
   title: "PointPizza Flensburg | Goldener Genuss - Beste Pizza & Pasta",
   description:
-    "Erlebe den Gold-Standard der Pizza in Flensburg. Frische Zutaten, 72h Teigruhe und hausgemachte Smoothies am Holm 59. Jetzt Speisekarte ansehen!",
+    "Erlebe den Gold-Standard der Pizza & Pasta in Flensburg. Frische Zutaten, 72h Teigruhe und hausgemachte Smoothies. Direkt am Holm 59 – Jetzt bestellen!",
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "Point Pizza Flensburg",
     "PointPizza Flensburg",
