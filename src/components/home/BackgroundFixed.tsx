@@ -8,11 +8,9 @@ export default function BackgroundFixed() {
       <Image
         src="/background.webp"
         alt="Pizza Hintergrundbild"
-        decoding="async"
-        data-nimg="fill"
         fill
         sizes="100vw"
-        quality={75}
+        quality={60}
         className="object-cover object-center opacity-40 scale-105"
         priority
       />
