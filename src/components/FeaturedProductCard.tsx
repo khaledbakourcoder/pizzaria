@@ -17,6 +17,8 @@ export default function FeaturedProductCard({ product }: { product: Product }) {
           src={product.imageUrl}
           alt={`Angebot: ${product.imageAlt}`}
           fill
+          loading="lazy"
+          decoding="async"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />

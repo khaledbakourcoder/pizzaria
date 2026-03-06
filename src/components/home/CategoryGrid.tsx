@@ -23,6 +23,7 @@ export default function CategoryGrid({ categories }: Props) {
                     alt={`Kategorie ${cat.name}`}
                     fill
                     loading="lazy"
+                    decoding="async"
                     sizes="(max-width: 768px) 33vw, 16vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
