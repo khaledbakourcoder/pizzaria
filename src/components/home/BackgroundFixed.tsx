@@ -6,7 +6,7 @@ export default function BackgroundFixed() {
       {/* Gradient nutzt nun die Hintergrund-Variable */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/40 to-background z-10" />
       <Image
-        src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070"
+        src="/background.webp"
         alt="Pizza Hintergrundbild"
         decoding="async"
         data-nimg="fill"
