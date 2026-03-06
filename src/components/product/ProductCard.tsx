@@ -53,27 +53,27 @@ export default function ProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <div className="bg-surface border border-border rounded-2xl overflow-hidden mb-8 flex flex-col md:flex-row shadow-2xl transition-transform hover:scale-[1.01]">
-      {/* Bild-Bereich */}
-      <div className="relative w-full md:w-1/3 h-64 md:h-80">
+    <div className="bg-surface border border-border rounded-2xl overflow-hidden flex flex-col shadow-xl transition-transform hover:scale-[1.02] hover:shadow-2xl">
+      {/* Bild-Bereich (Jetzt kompakter und immer oben) */}
+      <div className="relative w-full h-48 md:h-56">
         <Image
           src={product.imageUrl}
           alt={`Produktbild von ${product.imageAlt}`}
           fill
           loading="lazy"
           decoding="async"
-          sizes="(max-width: 768px) 100vw, 33vw"
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
         />
       </div>
 
       {/* Info-Bereich */}
-      <div className="p-6 flex-1 flex flex-col justify-between">
+      <div className="p-5 flex-1 flex flex-col justify-between">
         <div>
-          <h3 className="text-2xl font-serif font-bold text-primary mb-2 italic">
+          <h3 className="text-xl font-serif font-bold text-primary mb-1 italic">
             {product.name}
           </h3>
-          <p className="text-muted text-sm leading-relaxed mb-6">
+          <p className="text-muted text-xs leading-relaxed mb-6 line-clamp-3">
             {product.description}
           </p>
         </div>

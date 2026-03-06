@@ -54,6 +54,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { Providers } from "@/components/Providers";
+
 export default function RootLayout({
   children,
 }: {
@@ -64,7 +66,7 @@ export default function RootLayout({
 
       <body className="antialiased">
         <JsonLd />
-        {children}
+        <Providers>{children}</Providers>
         <SpeedInsights />
         <Analytics />
       </body>

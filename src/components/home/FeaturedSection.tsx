@@ -1,4 +1,5 @@
 import FeaturedProductCard from "@/components/FeaturedProductCard";
+import Link from "next/link";
 
 export default function FeaturedSection({ products }: { products: any[] }) {
   const bestSellers = products.filter((p) => p.isBestSeller);
@@ -19,6 +20,20 @@ export default function FeaturedSection({ products }: { products: any[] }) {
         {bestSellers.map((product) => (
           <FeaturedProductCard key={product.id} product={product} />
         ))}
+      </div>
+
+      {/* Call to action button for all menu */}
+      <div className="mt-20 flex justify-center">
+        <Link
+          href="/menu"
+          className="group relative px-12 py-5 border border-primary/30 hover:border-primary transition-all duration-700 rounded-full"
+        >
+          <span className="text-primary text-[10px] font-black tracking-[0.4em] uppercase relative z-10 transition-colors duration-500">
+            Alle Gerichte ansehen
+          </span>
+          {/* Subtle hover background fill */}
+          <div className="absolute inset-0 bg-primary/5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 rounded-full" />
+        </Link>
       </div>
     </section>
   );

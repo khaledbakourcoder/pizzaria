@@ -36,7 +36,7 @@ export default function CategoryNav({
   }, [activeCategory]); // Feuert jedes Mal, wenn sich die aktive Kategorie ändert
 
   return (
-    <nav className="bg-background/95 backdrop-blur-md border-b border-border sticky top-[HEADER_HEIGHT] z-40">
+    <nav className="bg-background/95 backdrop-blur-md border-b border-border sticky top-24 z-40">
       <div
         ref={navRef}
         className="max-w-5xl mx-auto flex justify-start md:justify-center overflow-x-auto no-scrollbar py-2 px-4 gap-1 scroll-smooth"

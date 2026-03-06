@@ -1,5 +1,9 @@
 "use client";
 
+import { useCart } from "@/lib/context/CartContext";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
+
 interface Props {
   productName: string;
   productPrices: Record<string, number>; // Neu: Alle verfügbaren Preise/Größen
@@ -27,8 +31,28 @@ export default function CustomizationModal({
   onSetDough,
   onToggleExtra,
 }: Props) {
-  return (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/60 backdrop-blur-sm p-0 md:p-4">
+  const { addToCart } = useCart();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleAddToCart = () => {
+    addToCart({
+      name: productName,
+      size: selectedSize.size,
+      dough: selectedDough?.name || "Klassik",
+      extras: selectedExtras,
+      price: parseFloat(total),
+    });
+    onClose();
+  };
+
+  if (!mounted) return null;
+
+  return createPortal(
+    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/60 backdrop-blur-sm p-0 md:p-4 z-50">
       <div className="absolute inset-0" onClick={onClose} />
 
       <div className="relative w-full max-w-lg bg-background max-h-[90vh] rounded-t-[2rem] md:rounded-[2rem] border-t md:border border-border shadow-2xl flex flex-col animate-slide-up overflow-hidden">
@@ -66,11 +90,10 @@ export default function CustomizationModal({
                   type={"button"}
                   key={size}
                   onClick={() => onSetSize(size, price)}
-                  className={`py-3 rounded-xl text-xs font-bold border transition-all ${
-                    selectedSize.size === size
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "border-border bg-surface text-muted"
-                  }`}
+                  className={`py-3 rounded-xl text-xs font-bold border transition-all ${selectedSize.size === size
+                    ? "border-primary bg-primary/10 text-primary"
+                    : "border-border bg-surface text-muted"
+                    }`}
                 >
                   <span className="block">{size}</span>
                   <span className="block opacity-60">
@@ -92,11 +115,10 @@ export default function CustomizationModal({
                   <button
                     key={dough.name}
                     onClick={() => onSetDough(dough)}
-                    className={`w-full flex justify-between p-4 rounded-xl border transition-all ${
-                      selectedDough?.name === dough.name
-                        ? "border-primary bg-primary/10 text-primary"
-                        : "border-border bg-surface text-muted"
-                    }`}
+                    className={`w-full flex justify-between p-4 rounded-xl border transition-all ${selectedDough?.name === dough.name
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "border-border bg-surface text-muted"
+                      }`}
                   >
                     <span className="text-sm font-medium">{dough.name}</span>
                     <span className="text-xs">
@@ -121,11 +143,10 @@ export default function CustomizationModal({
                   <button
                     key={topping.name}
                     onClick={() => onToggleExtra(topping.name)}
-                    className={`w-full flex justify-between items-center p-4 rounded-xl border transition-all ${
-                      selectedExtras.includes(topping.name)
-                        ? "border-primary bg-primary/10 text-primary"
-                        : "border-border bg-surface text-muted"
-                    }`}
+                    className={`w-full flex justify-between items-center p-4 rounded-xl border transition-all ${selectedExtras.includes(topping.name)
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "border-border bg-surface text-muted"
+                      }`}
                   >
                     <span className="text-sm font-medium">{topping.name}</span>
                     <span className="text-xs">
@@ -149,13 +170,14 @@ export default function CustomizationModal({
             </p>
           </div>
           <button
-            disabled
-            className="px-8 py-3 bg-white/5 border border-border text-muted rounded-xl text-xs font-bold cursor-not-allowed italic"
+            onClick={handleAddToCart}
+            className="px-8 py-3 bg-primary text-primary-fg rounded-xl shadow-lg hover:shadow-[0_0_15px_var(--color-primary)] transition-all font-black uppercase text-xs tracking-widest"
           >
-            Bald verfügbar
+            In den Warenkorb
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

@@ -3,7 +3,7 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     name: "PointPizza Flensburg",
-    image: "https://www.point-pizza-flensburg.de//logo.webp",
+    image: "https://www.point-pizza-flensburg.de/logo.webp",
     "@id": "https://www.point-pizza-flensburg.de/",
     url: "https://www.point-pizza-flensburg.de/",
     telephone: "+491716003785",
@@ -36,7 +36,7 @@ export default function JsonLd() {
     ],
     servesCuisine: ["Italian", "Pizza"],
     priceRange: "$$",
-    hasMenu: "https://www.point-pizza-flensburg.de//menu",
+    hasMenu: "https://www.point-pizza-flensburg.de/menu",
   };
 
   return (

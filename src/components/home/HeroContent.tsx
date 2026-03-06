@@ -10,10 +10,10 @@ export default function HeroContent() {
           </span>
         </div>
 
-        <h2 className="text-7xl md:text-9xl font-serif leading-[0.85] drop-shadow-2xl text-foreground">
+        <h1 className="text-7xl md:text-9xl font-serif leading-[0.85] drop-shadow-2xl text-foreground">
           Goldener <br />
           <span className="text-primary italic font-light">Genuss</span>
-        </h2>
+        </h1>
 
         <p className="max-w-xl mx-auto text-gray-200 text-lg font-light drop-shadow-md">
           Die beste Pizza der Stadt. Frische Zutaten, 72h Teigruhe und echte

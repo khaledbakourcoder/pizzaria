@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Product } from "@/types/product";
 
 export default function FeaturedProductCard({ product }: { product: Product }) {
@@ -10,46 +11,58 @@ export default function FeaturedProductCard({ product }: { product: Product }) {
   );
 
   return (
-    <div className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 hover:bg-white/10 hover:border-yellow-500/30">
+    <Link
+      href={`/menu#${product.category}`}
+      className="group block relative bg-[#0d151c]/40 backdrop-blur-xl border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-700 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(212,175,55,0.1)]"
+    >
       {/* Bild-Container mit Zoom-Effekt */}
-      <div className="relative h-72 w-full overflow-hidden">
+      <div className="relative h-80 w-full overflow-hidden">
         <Image
           src={product.imageUrl}
           alt={`Angebot: ${product.imageAlt}`}
           fill
           loading="lazy"
-          decoding="async"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          className="object-cover transition-all duration-1000 ease-out group-hover:scale-110 grayscale-[0.3] group-hover:grayscale-0"
         />
-        {/* Overlay für bessere Lesbarkeit */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+
+        {/* Subtle Overlay Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05080b] via-transparent to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+        {/* Floating Price Tag */}
+        <div className="absolute top-6 right-6">
+          <div className="bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full transform group-hover:-translate-y-1 transition-transform duration-500">
+            <span className="text-primary text-sm font-bold tracking-wider">
+              ab {startingPrice.toFixed(2)} €
+            </span>
+          </div>
+        </div>
       </div>
 
-      {/* Content - Zentriert und minimalistisch */}
-      <div className="p-8 text-center relative">
-        <span className="text-yellow-500 text-[10px] uppercase tracking-[0.3em] font-bold">
-          {product.category}
-        </span>
-        <h3 className="text-2xl font-serif italic text-white mt-2 mb-4">
-          {product.name}
-        </h3>
-
-        <div className="flex items-center justify-center gap-4">
-          <div className="h-[1px] w-8 bg-white/20"></div>
-          <span className="text-xl font-light text-gray-300">
-            {startingPrice.toFixed(2)} €
+      {/* Content - Editorial Style */}
+      <div className="p-10 text-center relative z-10">
+        <div className="flex flex-col items-center gap-3">
+          <span className="text-primary text-[9px] uppercase tracking-[0.4em] font-black opacity-70">
+            {product.category}
           </span>
-          <div className="h-[1px] w-8 bg-white/20"></div>
+          <h3 className="text-3xl font-serif italic text-white leading-tight tracking-tight">
+            {product.name}
+          </h3>
+
+          <div className="w-8 h-[1px] bg-primary/30 mt-4 group-hover:w-16 transition-all duration-700" />
         </div>
 
-        {/* Ein einfacher, eleganter Button-Ersatz */}
-        <div className="mt-6 opacity-0 translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-          <span className="text-yellow-500 text-xs uppercase tracking-widest border-b border-yellow-500 pb-1">
+        {/* Discovery Action */}
+        <div className="mt-8 flex justify-center items-center gap-2 opacity-60 group-hover:opacity-100 group-hover:text-primary transition-all duration-500">
+          <span className="text-[10px] uppercase tracking-[0.3em] font-bold">
             Details ansehen
           </span>
+          <span className="text-xs transform group-hover:translate-x-1 transition-transform duration-500">→</span>
         </div>
       </div>
-    </div>
+
+      {/* Hover Light Effect */}
+      <div className="absolute -inset-1 bg-gradient-to-tr from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+    </Link>
   );
 }

@@ -52,7 +52,7 @@ export const products = [
     imageUrl: `${pizzaPath}/prosciutto.webp`,
     imageAlt: "Pizza Prosciutto",
     prices: { S: 9.5, M: 11.5, L: 14.5 },
-    isBestSeller: false,
+    isBestSeller: true,
   },
   {
     id: "pizza-4",
@@ -163,8 +163,8 @@ export const products = [
     category: "Kalte Getränke",
     imageUrl: `${softDrinkPath}/cola.webp`,
     imageAlt: "Coca-Cola",
-    prices: { Dose: 2.5 },
-    isBestSeller: true,
+    prices: { "0.33l": 2.5, "1.0l": 4.5 },
+    isBestSeller: false,
   },
   {
     id: "soft-2",

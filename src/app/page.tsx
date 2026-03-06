@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import BackgroundFixed from "@/components/home/BackgroundFixed";
-import CategoryGrid from "@/components/home/CategoryGrid";
 import FeaturedSection from "@/components/home/FeaturedSection";
 import HeroContent from "@/components/home/HeroContent";
 import HomeNavbar from "@/components/home/HomeNavbar";
+import StorySection from "@/components/home/StorySection";
 import MainFooter from "@/components/layout/MainFooter";
 import StoreInfoBar from "@/components/layout/StoreInfoBar";
 
-import { categories } from "@/lib/constants/categories";
 import { products } from "@/lib/constants/products";
 
 export const metadata: Metadata = {
@@ -25,7 +24,7 @@ export default function Home() {
       </header>
       <BackgroundFixed />
       <HeroContent />
-      <CategoryGrid categories={categories} />
+      <StorySection />
       <FeaturedSection products={products} />
       <MainFooter />
     </main>
