@@ -2,7 +2,8 @@ export default function JsonLd({ settings, openingHours }: { settings: any, open
   const restaurantName = settings?.restaurant_name || "PointPizza Flensburg";
   const address = settings?.address || "Holm 59";
   const city = settings?.city || "Flensburg";
-  const phone = settings?.phone || "+491716003785";
+  const phone = settings?.phone || "+49 171 6003785";
+  const baseUrl = "https://www.point-pizza-flensburg.de";
 
   // Format opening hours for schema.org
   const openingHoursSpec = openingHours ? openingHours.map((oh: any) => {
@@ -37,36 +38,64 @@ export default function JsonLd({ settings, openingHours }: { settings: any, open
     },
   ];
 
-  const jsonLd = {
+  const restaurantSchema = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
+    "@id": `${baseUrl}/#restaurant`,
     name: restaurantName,
-    image: "https://www.point-pizza-flensburg.de/logo.webp",
-    "@id": "https://www.point-pizza-flensburg.de/",
-    url: "https://www.point-pizza-flensburg.de/",
+    image: `${baseUrl}/logo.webp`,
+    url: baseUrl,
     telephone: phone,
+    priceRange: "€ - €€",
+    servesCuisine: ["Italian", "Pizza", "Pasta"],
+    hasMenu: `${baseUrl}/menu`,
     address: {
       "@type": "PostalAddress",
       streetAddress: address,
-      addressLocality: city,
-      postalCode: city.split(" ")[0] || "24937",
+      addressLocality: "Flensburg",
+      postalCode: "24937",
       addressCountry: "DE",
     },
-    openingHoursSpecification: openingHoursSpec,
-    servesCuisine: ["Italian", "Pizza"],
-    priceRange: "€ - €€",
-    hasMenu: "https://www.point-pizza-flensburg.de/menu",
     geo: {
       "@type": "GeoCoordinates",
       latitude: "54.783047",
       longitude: "9.436274",
     },
+    openingHoursSpecification: openingHoursSpec,
+    sameAs: [
+      settings?.instagram_url || "https://www.instagram.com/pointpizza_flensburg/",
+    ],
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": baseUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Menü",
+        "item": `${baseUrl}/menu`
+      }
+    ]
   };
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    </>
   );
 }

@@ -28,12 +28,12 @@ export default async function Home() {
 
   try {
     const [hero, sections, prods, sets, hours, zones] = await Promise.all([
-      dataService.getHeroContent(),
-      dataService.getStorySections(),
-      dataService.getProducts(),
-      dataService.getSettings(),
-      dataService.getOpeningHours(),
-      dataService.getDeliveryZones()
+      dataService.getHeroContent().catch(err => { console.error("Hero fetch fail:", err); return null; }),
+      dataService.getStorySections().catch(err => { console.error("Story fetch fail:", err); return []; }),
+      dataService.getProducts().catch(err => { console.error("Products fetch fail:", err); return null; }),
+      dataService.getSettings().catch(err => { console.error("Settings fetch fail:", err); return null; }),
+      dataService.getOpeningHours().catch(err => { console.error("Hours fetch fail:", err); return null; }),
+      dataService.getDeliveryZones().catch(err => { console.error("Zones fetch fail:", err); return []; })
     ]);
     dynamicHero = hero;
     storySections = sections;
