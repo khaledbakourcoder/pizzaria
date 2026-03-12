@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const pillars = [
+const staticPillars = [
     {
         id: 1,
         title: "72h Leidenschaft",
@@ -27,38 +27,59 @@ const pillars = [
     }
 ];
 
-export default function StorySection() {
+interface StorySectionProps {
+    section: any;
+}
+
+export default function StorySection({ section }: StorySectionProps) {
+    const pillarsData = section?.story_pillars || section?.pillars || [];
+    
+    const pillars = pillarsData.length > 0 ? pillarsData.map((p: any) => ({
+        id: p.id,
+        title: p.title,
+        subtitle: p.subtitle,
+        text: p.text,
+        image: p.image_url || "/story/dough.png",
+        icon: p.icon || "⭐"
+    })) : staticPillars;
+
+    const badgeText = section?.badge_text || "Unsere Philosophie";
+    const quoteText = section?.quote_text || "„Wir machen Pizza, wie sie sein sollte — mit Geduld und den besten Zutaten.“";
+    const subtitleText = section?.subtitle_text || "— Seit 2024 in Flensburg";
+
     return (
-        <section id="about" className="relative py-32 md:py-48 overflow-hidden bg-[#05080b] border-t border-white/5">
+        <section className="relative py-24 md:py-32 overflow-hidden bg-[#05080b] border-t border-white/5">
             {/* --- Advanced Background Layers --- */}
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]" />
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[160px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Header Part */}
-                <div className="max-w-4xl mx-auto text-center mb-32 space-y-10">
+                <div className="max-w-4xl mx-auto text-center mb-24 md:mb-32 space-y-8 md:space-y-10">
                     <div className="inline-flex items-center gap-3 bg-white/5 border border-primary/20 px-4 py-1.5 rounded-full">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                         <h2 className="text-primary text-[9px] font-black tracking-[0.4em] uppercase">
-                            Unsere Philosophie
+                            {badgeText}
                         </h2>
                     </div>
 
                     <blockquote className="text-4xl md:text-7xl font-serif italic text-white leading-[1.05] tracking-tight">
-                        „Wir machen Pizza, wie sie <span className="text-primary/90">sein sollte</span> — mit Geduld und den besten Zutaten.“
+                        {quoteText.includes('<span') ? (
+                            <div dangerouslySetInnerHTML={{ __html: quoteText }} />
+                        ) : quoteText}
                     </blockquote>
 
                     <div className="flex flex-col items-center gap-6">
                         <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
                         <p className="text-gray-400 font-light tracking-[0.3em] uppercase text-[11px]">
-                            — Seit 2024 in Flensburg
+                            {subtitleText}
                         </p>
                     </div>
                 </div>
 
                 {/* Narrative Grid */}
                 <div className="space-y-32 md:space-y-48">
-                    {pillars.map((pillar, index) => (
+                    {pillars.map((pillar: any, index: number) => (
                         <div
                             key={pillar.id}
                             className={`flex flex-col gap-12 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'

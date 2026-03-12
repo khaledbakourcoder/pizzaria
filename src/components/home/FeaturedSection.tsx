@@ -2,7 +2,7 @@ import FeaturedProductCard from "@/components/FeaturedProductCard";
 import Link from "next/link";
 
 export default function FeaturedSection({ products }: { products: any[] }) {
-  const bestSellers = products.filter((p) => p.isBestSeller);
+  const bestSellers = products.filter((p) => p.is_best_seller || p.isBestSeller);
 
   return (
     <section className="py-32 max-w-7xl mx-auto px-6 relative z-20">

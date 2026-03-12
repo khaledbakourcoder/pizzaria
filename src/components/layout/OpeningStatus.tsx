@@ -2,8 +2,12 @@
 import { useEffect, useState } from "react";
 import useStoreStatus from "@/hooks/useStoreStatus";
 
-export default function OpeningStatus() {
-  const statusInfo = useStoreStatus();
+interface OpeningStatusProps {
+  openingHours?: any[] | null;
+}
+
+export default function OpeningStatus({ openingHours }: OpeningStatusProps) {
+  const statusInfo = useStoreStatus(openingHours);
   const [mounted, setMounted] = useState(false);
 
   // Hydration-Fix: Erst rendern, wenn der Client bereit ist

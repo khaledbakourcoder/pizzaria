@@ -2,8 +2,16 @@
 
 import { useCart } from "@/lib/context/CartContext";
 
-export default function CartDrawer() {
+interface CartDrawerProps {
+    settings?: any;
+}
+
+export default function CartDrawer({ settings }: CartDrawerProps) {
     const { items, isCartOpen, toggleCart, updateQuantity, cartTotal } = useCart();
+
+    const minOrderValue = settings?.min_order_value || 15;
+    const phone = settings?.phone || "+49 171 6003785";
+    const phoneLink = `tel:${phone.replace(/\s+/g, "")}`;
 
     if (!isCartOpen) return null;
 
@@ -108,13 +116,20 @@ export default function CartDrawer() {
                                     Bald für dich verfügbar!
                                 </p>
                                 <div className="h-[1px] w-12 bg-primary/30 mx-auto mb-3" />
-                                <p className="text-muted text-[9px] uppercase tracking-widest leading-relaxed">
-                                    Aktuell nehmen wir Bestellungen <br />gerne telefonisch entgegen:
-                                </p>
+                                {cartTotal < minOrderValue ? (
+                                    <p className="text-orange-400 text-[9px] uppercase tracking-widest leading-relaxed font-bold">
+                                        Mindestbestellwert: {minOrderValue.toFixed(2)} € <br />
+                                        Noch {(minOrderValue - cartTotal).toFixed(2)} € fehlen
+                                    </p>
+                                ) : (
+                                    <p className="text-muted text-[9px] uppercase tracking-widest leading-relaxed">
+                                        Aktuell nehmen wir Bestellungen <br />gerne telefonisch entgegen:
+                                    </p>
+                                )}
                             </div>
 
                             <a
-                                href="tel:+491716003785"
+                                href={phoneLink}
                                 className="w-full flex items-center justify-center gap-3 py-4 bg-primary text-black rounded-full shadow-lg hover:shadow-[0_0_20px_var(--color-primary)] transition-all font-black uppercase tracking-widest text-xs"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">

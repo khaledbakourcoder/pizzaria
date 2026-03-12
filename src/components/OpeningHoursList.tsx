@@ -1,7 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export default function OpeningHoursList() {
+interface OpeningHoursListProps {
+  hours?: any[] | null;
+}
+
+export default function OpeningHoursList({ hours }: OpeningHoursListProps) {
   const [dayIndex, setDayIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -9,10 +13,29 @@ export default function OpeningHoursList() {
     setDayIndex(new Date().getDay());
   }, []);
 
-  // Hilfsfunktion: Prüft ob der aktuelle Tag in die Gruppe fällt
-  // Gruppe 1: Mo-Do (1, 2, 3, 4)
-  // Gruppe 2: Fr-Sa (5, 6)
-  // Gruppe 3: So (0)
+  // Helper to format hours
+  const getHoursForDay = (days: number[]) => {
+    if (!hours || hours.length === 0) {
+      if (days.includes(1)) return "11:30 - 22:00"; // Mo-Do
+      if (days.includes(5)) return "11:30 - 23:00"; // Fr-Sa
+      return "12:00 - 21:00"; // So
+    }
+
+    const dayHours = hours.filter(h => days.includes(h.day_of_week));
+    if (dayHours.length === 0) return "Geschlossen";
+
+    // If all days in group have same time, show once
+    const first = dayHours[0];
+    const allSame = dayHours.every(h => h.open_time === first.open_time && h.close_time === first.close_time && h.is_closed === first.is_closed);
+
+    if (allSame) {
+      if (first.is_closed) return "Geschlossen";
+      return `${first.open_time?.substring(0, 5)} - ${first.close_time?.substring(0, 5)}`;
+    }
+
+    return "Variiert";
+  };
+
   const isMoDo = dayIndex !== null && dayIndex >= 1 && dayIndex <= 4;
   const isFrSa = dayIndex !== null && (dayIndex === 5 || dayIndex === 6);
   const isSo = dayIndex === 0;
@@ -24,7 +47,7 @@ export default function OpeningHoursList() {
       >
         <span>Mo - Do:</span>
         <span className={isMoDo ? "text-primary" : "text-foreground"}>
-          11:30 - 22:00
+          {getHoursForDay([1, 2, 3, 4])}
         </span>
       </li>
       <li
@@ -32,7 +55,7 @@ export default function OpeningHoursList() {
       >
         <span>Fr - Sa:</span>
         <span className={isFrSa ? "text-primary" : "text-foreground"}>
-          11:30 - 23:00
+          {getHoursForDay([5, 6])}
         </span>
       </li>
       <li
@@ -40,7 +63,7 @@ export default function OpeningHoursList() {
       >
         <span>So:</span>
         <span className={isSo ? "text-primary" : "text-foreground"}>
-          12:00 - 21:00
+          {getHoursForDay([0])}
         </span>
       </li>
     </ul>

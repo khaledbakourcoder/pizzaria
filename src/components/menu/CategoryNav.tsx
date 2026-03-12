@@ -39,7 +39,7 @@ export default function CategoryNav({
     <nav className="bg-background/95 backdrop-blur-md border-b border-border sticky top-24 z-40">
       <div
         ref={navRef}
-        className="max-w-5xl mx-auto flex justify-start md:justify-center overflow-x-auto no-scrollbar py-2 px-4 gap-1 scroll-smooth"
+        className="max-w-5xl mx-auto flex justify-start md:justify-center overflow-x-auto no-scrollbar py-2 px-4 gap-1 scroll-smooth flex flex-row-reverse"
       >
         {categories.map((cat) => {
           const name = typeof cat === "string" ? cat : cat.name;

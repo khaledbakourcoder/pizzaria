@@ -5,7 +5,7 @@ import { Product } from "@/types/product";
 import CustomizationModal from "./CustomizationModal";
 import { useCart } from "@/lib/context/CartContext";
 
-export default function DrinkListItem({ product }: { product: Product }) {
+export default function DrinkListItem({ product }: { product: any }) {
     const { addToCart } = useCart();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedSize, setSelectedSize] = useState<{
@@ -13,10 +13,23 @@ export default function DrinkListItem({ product }: { product: Product }) {
         price: number;
     } | null>(null);
 
-    // Get the first size/price to display as default
-    const pricesArray = Object.entries(product.prices);
-    const firstSize = pricesArray[0][0];
-    const firstPrice = pricesArray[0][1];
+    // Normalize prices for display
+    let pricesObj: Record<string, number> = {};
+    if (product.prices && typeof product.prices === 'object') {
+        if (Array.isArray(product.prices)) {
+            product.prices.forEach((p: any) => {
+                pricesObj[p.size_name || p.size] = p.price;
+            });
+        } else {
+            pricesObj = product.prices;
+        }
+    } else if (product.price) {
+        pricesObj = { [product.size || "Standard"]: product.price };
+    }
+
+    const pricesArray = Object.entries(pricesObj);
+    const firstSize = pricesArray.length > 0 ? pricesArray[0][0] : "Standard";
+    const firstPrice = pricesArray.length > 0 ? pricesArray[0][1] : 0;
     const hasMultipleSizes = pricesArray.length > 1;
 
     const handleAction = () => {
@@ -46,7 +59,7 @@ export default function DrinkListItem({ product }: { product: Product }) {
 
     return (
         <>
-            <div className="flex items-center justify-between py-4 border-b border-white/5 hover:border-primary/30 transition-colors group gap-4">
+            <div className={`flex items-center justify-between py-4 border-b border-white/5 hover:border-primary/30 transition-colors group gap-4 ${!product.is_available ? "opacity-50 pointer-events-none grayscale" : ""}`}>
                 <div className="flex-1 pr-2 truncate">
                     <h3 className="text-lg font-serif italic text-white group-hover:text-primary transition-colors truncate">
                         {product.name}
@@ -97,7 +110,7 @@ export default function DrinkListItem({ product }: { product: Product }) {
             {isModalOpen && selectedSize && (
                 <CustomizationModal
                     productName={product.name}
-                    productPrices={product.prices}
+                    productPrices={pricesObj}
                     categoryData={null} // Drinks have no doughs/toppings
                     selectedSize={selectedSize}
                     selectedDough={null}

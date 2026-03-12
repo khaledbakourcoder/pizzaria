@@ -3,9 +3,20 @@ import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/lib/context/CartContext";
 
-export default function HomeNavbar() {
+interface HomeNavbarProps {
+  settings?: any;
+}
+
+export default function HomeNavbar({ settings }: HomeNavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { toggleCart, items } = useCart();
+
+  const restaurantName = settings?.restaurant_name || "PointPizza";
+  const city = settings?.city || "Flensburg";
+
+  // Split restaurant name for styling if it contains "Pizza"
+  const nameParts = restaurantName.toUpperCase().split("PIZZA");
+  const hasPizza = restaurantName.toUpperCase().includes("PIZZA");
 
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -16,11 +27,17 @@ export default function HomeNavbar() {
           <div className="flex items-center gap-2 group cursor-pointer">
             <div className="w-3 h-3 bg-primary rounded-full shadow-[0_0_15px_var(--color-primary)]" />
             <h1 className="text-2xl font-black tracking-tighter italic uppercase text-foreground">
-              POINT<span className="text-primary">PIZZA</span>
+              {hasPizza ? (
+                <>
+                  {nameParts[0]}<span className="text-primary">PIZZA</span>{nameParts[1]}
+                </>
+              ) : (
+                restaurantName
+              )}
             </h1>
           </div>
           <p className="text-[10px] text-muted tracking-[0.4em] uppercase pl-5">
-            Flensburg
+            {city}
           </p>
         </Link>
 

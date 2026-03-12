@@ -7,14 +7,28 @@ import { Product } from "@/types/product";
 import CustomizationModal from "./CustomizationModal";
 import PriceSizeSelector from "./PriceSizeSelector";
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ product, categoryExtras }: { product: any; categoryExtras?: any[] }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // 1. Finde die Kategorie-Daten für dieses Produkt
-  const categoryData = useMemo(
-    () => categories.find((cat) => cat.name === product.category),
-    [product.category],
-  );
+  const categoryData = useMemo(() => {
+    // Falls static data, nutze .name
+    const catName = product.category_name || product.category;
+    const staticData = categories.find((cat) => cat.name === catName);
+
+    if (categoryExtras && categoryExtras.length > 0) {
+      return {
+        ...staticData,
+        doughs: categoryExtras.filter(e => e.type === 'teig' && e.is_available),
+        toppings: categoryExtras.filter(e => (e.type === 'topping' || e.type === 'sosse') && e.is_available)
+      };
+    }
+    return staticData;
+  }, [product, categoryExtras]);
+
+  // Handle dynamic URLs
+  const imageUrl = product.image_url || product.imageUrl || "/images/placeholder-pizza.jpg";
+  const imageAlt = product.image_alt || product.imageAlt || product.name;
 
   // 2. States initialisieren
   const [selectedSize, setSelectedSize] = useState<{
@@ -46,7 +60,6 @@ export default function ProductCard({ product }: { product: Product }) {
     const doughPrice = selectedDough?.price || 0;
     const extrasPrice = selectedExtras.reduce((sum, name) => {
       const extra = categoryData?.toppings?.find((t) => t.name === name);
-      console.log(extra);
       return sum + (extra?.price || 0);
     }, 0);
     return (base + doughPrice + extrasPrice).toFixed(2);
@@ -57,8 +70,8 @@ export default function ProductCard({ product }: { product: Product }) {
       {/* Bild-Bereich (Jetzt kompakter und immer oben) */}
       <div className="relative w-full h-48 md:h-56">
         <Image
-          src={product.imageUrl}
-          alt={`Produktbild von ${product.imageAlt}`}
+          src={imageUrl}
+          alt={`Produktbild von ${imageAlt}`}
           fill
           loading="lazy"
           decoding="async"
@@ -78,14 +91,25 @@ export default function ProductCard({ product }: { product: Product }) {
           </p>
         </div>
 
-        <PriceSizeSelector prices={product.prices} onSelect={handleOpen} />
+        <div className={!product.is_available ? "opacity-50 pointer-events-none grayscale" : ""}>
+
+        <PriceSizeSelector prices={product.prices || { [product.size || "Standard"]: product.price }} onSelect={handleOpen} />
+        
+        {!product.is_available && (
+          <div className="mt-4 p-2 bg-red-500/10 border border-red-500/20 rounded-xl text-center">
+            <p className="text-red-400 text-[10px] uppercase font-bold tracking-widest">
+              Aktuell nicht verfügbar
+            </p>
+          </div>
+        )}
       </div>
+    </div>
 
       {/* Modal - Erhält nun categoryData als Prop für dynamische Felder */}
       {isModalOpen && selectedSize && (
         <CustomizationModal
           productName={product.name}
-          productPrices={product.prices}
+          productPrices={product.prices || { [product.size || "Standard"]: product.price }}
           categoryData={categoryData} // Übergebe die kompletten Kategorie-Optionen
           selectedSize={selectedSize}
           selectedDough={selectedDough}
